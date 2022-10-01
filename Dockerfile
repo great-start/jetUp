@@ -1,19 +1,50 @@
-FROM node:16-alpine
+###################
+# BUILD FOR LOCAL DEVELOPMENT
+###################
 
-LABEL title="JetUp test task"
-LABEL release-date="01-11-2022"
+FROM node:16-alpine As development
 
-#RUN addgroup app && adduser -S -G app app
-#USER app
+WORKDIR /usr/src/app
 
-WORKDIR /app
-COPY package.json ./
-RUN npm install
-COPY . .
+COPY --chown=node:node package*.json ./
 
+RUN npm ci
+
+COPY --chown=node:node . .
+
+#USER node
+
+###################
+# BUILD FOR PRODUCTION
+###################
+
+#FROM node:16-alpine As build
+#
+#WORKDIR /usr/src/app
+#
+#COPY --chown=node:node package*.json ./
+#
+#COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
+#
+#COPY --chown=node:node . .
+#
 RUN npm run build
+#
+#ENV NODE_ENV production
+#
+#RUN npm ci && npm cache clean --force
+#
+#USER node
 
-EXPOSE 3000
+###################
+# PRODUCTION
+###################
 
-CMD ["node", "dist/main.js"]
+#FROM node:18-alpine As production
+#
+#COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
+#COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+#
+CMD [ "node", "dist/main.js" ]
+
 
