@@ -10,7 +10,7 @@ import { typeOrmAsyncConfig } from "./config/typeORM.config";
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    // TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
   ],
   controllers: [AppController],
   providers: [AppService],
