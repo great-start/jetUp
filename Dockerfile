@@ -9,10 +9,8 @@ RUN npm ci
 
 COPY --chown=node:node . .
 
-#RUN npm run prisma:init
-
 RUN npm run build
 
-CMD [ "node", "dist/main.js" ]
+CMD [ "npm", "run", "start:prod" ]
 
 
