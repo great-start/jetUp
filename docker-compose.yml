@@ -3,7 +3,7 @@ version: "3.9"
 services:
   db:
     image: postgres:14.5-alpine
-    container_name: container_db
+    container_name: jetup_db
     restart: always
     environment:
       POSTGRES_USER: postgres
