@@ -6,7 +6,7 @@ import { HtmlParserService } from './html.parser.service';
 export class TasksService {
   constructor(private readonly htmlParserService: HtmlParserService) {}
 
-  @Timeout(0)
+  @Timeout(500)
   async handleTimeout() {
     return this.htmlParserService.getEmployeeList();
   }
