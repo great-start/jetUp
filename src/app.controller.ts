@@ -1,22 +1,35 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
+import {
+  ApiBadRequestResponse,
+  ApiExcludeEndpoint,
+  ApiInternalServerErrorResponse,
+  ApiOperation, ApiQuery,
+  ApiResponse,
+  ApiTags
+} from "@nestjs/swagger";
+import { ApiImplicitQuery } from "@nestjs/swagger/dist/decorators/api-implicit-query.decorator";
 
-@Controller('')
+@ApiTags('team')
+@Controller('/team')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello() {
-    return "Server hello!!!";
-  }
-
-  @Get('team')
-  getAllEmployee() {
-    return this.appService.getAllEmployees()
-  }
-
-  @Get('team/:position')
-  getEmployeesByPosition(@Param('position') position: string) {
-    return this.appService.getEmployeesByPosition(position);
+  @Get('/')
+  @ApiQuery({
+    name: 'name',
+    required: false,
+    type: String,
+  })
+  @ApiQuery({
+    name: 'position',
+    required: false,
+    type: String,
+  })
+  getEmployeesByPosition(
+    @Query('name') name: string,
+    @Query('position') position: string,
+  ) {
+    return this.appService.getEmployeesByPosition(name, position);
   }
 }

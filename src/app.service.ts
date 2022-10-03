@@ -6,10 +6,17 @@ import { PrismaService } from './prisma.service';
 export class AppService {
   constructor(private prismaService: PrismaService) {}
 
-  async getEmployeesByPosition(position: string): Promise<Employee[]> {
+  async getEmployeesByPosition(name: string, position: string): Promise<Employee[]> {
+    if (!name && !position) {
+      return await this.prismaService.employee.findMany();
+    }
+
+    console.log(name, position);
+
     const foundedEmployees = await this.prismaService.employee.findMany({
       where: {
-        position: position.trim(),
+        position: position ? position.trim() : undefined,
+        name: name ? name.trim() : undefined,
       },
     });
 
