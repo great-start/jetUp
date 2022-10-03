@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from "@nestjs/axios";
-// import { PrismaService } from "./prisma.service";
-import { TasksModule } from './tasks/tasks.module';
+import { AppService } from './app.service';
 import { ScheduleModule } from "@nestjs/schedule";
+
+import { AppController } from './app.controller';
+import { TasksModule } from './tasks/tasks.module';
 import { PrismaService } from "./prisma.service";
 
 @Module({
