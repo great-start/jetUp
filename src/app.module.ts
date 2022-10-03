@@ -7,6 +7,8 @@ import { ScheduleModule } from "@nestjs/schedule";
 import { AppController } from './app.controller';
 import { TasksModule } from './tasks/tasks.module';
 import { PrismaService } from "./prisma.service";
+import { TeamModule } from './team/team.module';
+import { TeamModule } from './team/team.module';
 
 @Module({
   imports: [
@@ -15,7 +17,8 @@ import { PrismaService } from "./prisma.service";
     }),
     ScheduleModule.forRoot(),
     HttpModule,
-    TasksModule
+    TasksModule,
+    TeamModule
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
