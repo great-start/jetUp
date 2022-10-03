@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Backend documentation')
-    .setDescription('The store API description')
+    .setDescription('The API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

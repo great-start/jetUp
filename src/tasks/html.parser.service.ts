@@ -37,5 +37,7 @@ export class HtmlParserService {
         data: employees,
         skipDuplicates: true
       });
+
+    console.log("Employees list stored to database!");
     }
 }
