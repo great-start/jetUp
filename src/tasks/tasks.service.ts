@@ -1,5 +1,6 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Timeout } from '@nestjs/schedule';
+
 import { HtmlParserService } from './html.parser.service';
 
 @Injectable()
