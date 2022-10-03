@@ -38,6 +38,6 @@ export class HtmlParserService {
         skipDuplicates: true
       });
 
-    console.log("Employees list stored to database!");
+    console.log("Page https://jetup.digital/team parsed and employees list stored to database!");
     }
 }

@@ -25,8 +25,8 @@ export class TeamController {
       example: [
         {
           id: 12,
-          name: 'Vanya',
-          position: 'Developer',
+          name: 'Artem',
+          position: 'Founder',
           createdAt: '2022-10-03 12:46:41.246',
         },
       ],

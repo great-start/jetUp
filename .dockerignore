@@ -1,5 +1,9 @@
-Dockerfile
-.dockerignore
-node_modules
+**/node_modules/
+**/dist
+
+prisma/migrations
+
 npm-debug.log
-dist
+.idea
+.git
+*.md
