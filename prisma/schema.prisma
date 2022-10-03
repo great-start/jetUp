@@ -11,6 +11,6 @@ model Employee {
   id        Int      @id @default(autoincrement())
   name      String
   position  String
-  test      String
+  text      String
   createdAt DateTime @default(now())
 }

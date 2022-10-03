@@ -1,12 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, Interval, Timeout } from '@nestjs/schedule';
+import { Timeout } from '@nestjs/schedule';
+import { HtmlParserService } from './html.parser.service';
 
 @Injectable()
 export class TasksService {
-  private readonly logger = new Logger(TasksService.name);
+  constructor(private readonly htmlParserService: HtmlParserService) {}
 
-  @Timeout(5000)
+  @Timeout(0)
   handleTimeout() {
-    this.logger.debug('Called once after 5 seconds');
+    this.htmlParserService.getEmployeeList();
   }
 }
