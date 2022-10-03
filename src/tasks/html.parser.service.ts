@@ -23,7 +23,9 @@ export class HtmlParserService {
           const names = cssSelect.selectAll(".user-name", dom);
           const positions = cssSelect.selectAll(".position", dom);
 
-          for (let i = 0; i < names.length; i++) {
+          console.log(positions.length);
+
+          for (let i = 0; i < positions.length; i++) {
             employees.push({
               // @ts-ignore
               name: names[i].children[0].data,

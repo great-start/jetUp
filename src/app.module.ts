@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { HtmlParserService } from './tasks/html.parser.service';
 import { HttpModule } from "@nestjs/axios";
 // import { PrismaService } from "./prisma.service";
 import { TasksModule } from './tasks/tasks.module';
@@ -19,6 +18,6 @@ import { PrismaService } from "./prisma.service";
     TasksModule
   ],
   controllers: [AppController],
-  providers: [AppService, HtmlParserService, PrismaService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
