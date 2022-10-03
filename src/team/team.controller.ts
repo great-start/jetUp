@@ -1,22 +1,23 @@
-import { Controller, Get, Query } from "@nestjs/common";
-import { TeamService } from './team.service';
+import { Controller, Get, Query } from '@nestjs/common';
 import {
-  ApiBadRequestResponse,
   ApiInternalServerErrorResponse,
+  ApiNotFoundResponse,
   ApiOperation,
   ApiQuery,
   ApiResponse,
-  ApiTags
-} from "@nestjs/swagger";
+  ApiTags,
+} from '@nestjs/swagger';
+
+import { TeamService } from './team.service';
 
 @ApiTags('Team')
 @Controller('team')
 export class TeamController {
   constructor(private readonly teamService: TeamService) {}
 
-@ApiOperation({
-    summary: 'Sign up',
-    description: 'Get all employees',
+  @ApiOperation({
+    summary: 'Get all employees or list of employees by query',
+    description: 'Get employees',
   })
   @ApiResponse({
     status: 200,
@@ -31,19 +32,19 @@ export class TeamController {
       ],
     },
   })
-  @ApiBadRequestResponse({
+  @ApiNotFoundResponse({
     schema: {
       example: {
-        "statusCode": 404,
-      "message": "Not Found"
+        statusCode: 404,
+        message: 'Not Found',
       },
     },
   })
   @ApiInternalServerErrorResponse({
     schema: {
       example: {
-        status: 500,
-        error: 'Server error',
+        statusCode: 500,
+        message: 'Internal server error',
       },
     },
   })
