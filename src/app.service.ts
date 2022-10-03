@@ -6,7 +6,7 @@ import { PrismaService } from './prisma.service';
 export class AppService {
   constructor(private prismaService: PrismaService) {}
 
-  async getAllEmployeeOrByName(position: string): Promise<Employee[]> {
+  async getEmployeesByPosition(position: string): Promise<Employee[]> {
     const foundedEmployees = await this.prismaService.employee.findMany({
       where: {
         position: position.trim(),
@@ -20,7 +20,7 @@ export class AppService {
     return foundedEmployees;
   }
 
-  async getAllEmployee(): Promise<Employee[]> {
+  async getAllEmployees(): Promise<Employee[]> {
     return await this.prismaService.employee.findMany();
   }
 }

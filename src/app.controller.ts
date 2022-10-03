@@ -12,11 +12,11 @@ export class AppController {
 
   @Get('team')
   getAllEmployee() {
-    return this.appService.getAllEmployee()
+    return this.appService.getAllEmployees()
   }
 
   @Get('team/:position')
-  getAllEmployeeByPosition(@Param('position') position: string) {
-    return this.appService.getAllEmployeeOrByName(position);
+  getEmployeesByPosition(@Param('position') position: string) {
+    return this.appService.getEmployeesByPosition(position);
   }
 }
