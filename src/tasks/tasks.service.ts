@@ -7,7 +7,7 @@ export class TasksService {
   constructor(private readonly htmlParserService: HtmlParserService) {}
 
   @Timeout(0)
-  handleTimeout() {
-    this.htmlParserService.getEmployeeList();
+  async handleTimeout() {
+    return this.htmlParserService.getEmployeeList();
   }
 }
